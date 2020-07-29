@@ -3,10 +3,12 @@ package com.user.jattana.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import com.user.jattana.dao.ItemDao;
 import com.user.jattana.model.Item;
 
+@Component
 public class ItemServiceImpl implements ItemService {
 
 	@Autowired
