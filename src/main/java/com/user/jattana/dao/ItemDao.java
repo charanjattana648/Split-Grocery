@@ -13,5 +13,7 @@ public interface ItemDao {
 	List<Item> getThisMonthItems(int monthyear);
 	
 	boolean deleteItem(int id);
+	
+	int numberOfItems();
 
 }
