@@ -1,0 +1,3 @@
+Items [id=1, itemName=Apple, qty=4, itemPrice=4.5, forWhom=null, type=shared, boughtBy=charan, date=2020-07-28]
+Items [id=1, itemName=5 Bhatura, qty=5, itemPrice=5.1, forWhom=null, type=shared, boughtBy=charan, date=2020-07-28]
+Items [id=3, itemName=Banana, qty=4, itemPrice=1.45, forWhom=null, type=shared, boughtBy=charan, date=2020-07-28]
