@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.user.jattana.dao.ItemDao;
 import com.user.jattana.model.Item;
 import com.user.jattana.model.Person;
 
@@ -23,8 +24,10 @@ public class ItemController {
 	//@Autowired
 	
 //	
-//	@Autowired
-//	Person person;
+	
+	  @Autowired 
+	  ItemDao itemDao;
+	 
 	
 	List<Item> itemList=new ArrayList<Item>();
 	
@@ -41,9 +44,10 @@ public class ItemController {
 	{
 		ModelAndView mv=new ModelAndView("home");
 		Item item=new_item;
-		item.setId(itemList.size()+1);
+		item.setId(itemDao.numberOfItems()+1);
 		item.setDate(java.time.LocalDate.now());
 		itemList.add(item);
+		itemDao.addItem(item);
 		mv.addObject("items", itemList);
 		return mv;
 	}
