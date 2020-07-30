@@ -6,22 +6,29 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.user.jattana.model.Item;
+import com.user.jattana.model.Person;
 
 @Component
 public class ItemDaoImpl implements ItemDao{
 	
 	private final String PATH="C:\\Users\\charan\\Desktop\\studyData\\Projects 2020\\java\\Split-Grocery\\src\\main\\resources\\itemData.txt"; 
 
+	@Autowired
+	FileDao fileDao;
 	public boolean addItem(Item item) {
 		// TODO Auto-generated method stub
 		System.out.println("entering for adding item...!!");
-		return writeFile(item);
+		return fileDao.addData(item.toString(), PATH, true);
+		
 	}
 
 	public List<Item> getAllItems() {
@@ -29,83 +36,68 @@ public class ItemDaoImpl implements ItemDao{
 		BufferedReader reader;
 		int lines = 0;
 		try {
-			reader = new BufferedReader(new FileReader(PATH));
-			while (reader.readLine() != null) lines++;
+			reader = fileDao.getData(PATH);
+			String line="";
+			while ((line=reader.readLine())!= null) { 
+				System.out.println(line);
+			String itemData[]=line.split(", ");	
+			Item item=new Item();
+			for(String data: itemData){
+				String item_data[]=data.split("=");
+				if(item_data[0].equalsIgnoreCase("id"))
+				{
+					item.setId(Integer.parseInt(item_data[1]));
+				}else if(item_data[0].equalsIgnoreCase("itemName"))
+				{
+					item.setItemName(item_data[1]);					
+				}else if(item_data[0].equalsIgnoreCase("qty"))
+				{
+					item.setQty(Integer.parseInt(item_data[1]));
+				}else if(item_data[0].equalsIgnoreCase("itemPrice"))
+				{
+					item.setItemPrice(Double.parseDouble(item_data[1]));
+				}else if(item_data[0].equalsIgnoreCase("type"))
+				{
+					item.setType(item_data[1]);	
+				}else if(item_data[0].equalsIgnoreCase("boughtBy"))
+				{
+					item.setBoughtBy(item_data[1]);	
+				}else if(item_data[0].equalsIgnoreCase("date"))
+				{
+					DateTimeFormatter formatter = DateTimeFormatter. ofPattern( "yyyy-MM-dd" ); 
+					LocalDate date = LocalDate. parse( item_data[1] , formatter);
+					item.setDate(date);	
+				}else if(item_data[0].equalsIgnoreCase("forWhom"))
+				{
+					//item.setForWhom((item_data[1].split(","));	
+				}
+				
+			}itemList.add(item);
+			}
 			reader.close();
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return null;
+		return itemList;
 	}
 
 	public List<Item> getThisMonthItems(int monthyear) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	public boolean deleteItem(int id) {
-		// TODO Auto-generated method stub
 		return false;
-	}
-	
-	public boolean writeFile(Item item) {
-		boolean isFileExist=false;
-		try {
-		      File myObj = new File(PATH);
-		      if (myObj.createNewFile()) {
-		        System.out.println("File created: " + myObj.getName());
-		        return addDataToFile(item,isFileExist);
-		      } else {
-		    	isFileExist=true;
-		        System.out.println("File already exists.");
-		        return addDataToFile(item,isFileExist);
-		      }
-		    } catch (IOException e) {
-		      System.out.println("An error occurred.");
-		      e.printStackTrace();
-		      return false;
-		    }		
-	}
-	
-	public boolean addDataToFile(Item item,boolean isFileExist) {
-		try {
-		FileWriter myWriter = new FileWriter(PATH,true);
-		if(isFileExist) {
-	      myWriter.write("\n"+item.toString());
-		}else {
-			 myWriter.write(item.toString());
-		}
-	      myWriter.close();
-	      System.out.println("Successfully wrote to the file.");
-	      return true;
-	    } catch (IOException e) {
-	      System.out.println("An error occurred.");
-	      e.printStackTrace();
-	      return false;
-	    }
-		
 	}
 
 	public int numberOfItems() {
-		BufferedReader reader;
-		int lines = 0;
-		try {
-			reader = new BufferedReader(new FileReader(PATH));
-			while (reader.readLine() != null) lines++;
-			reader.close();
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 	
-		return lines;
+		return fileDao.size(PATH);
+	}
+
+	public int getLastId() {		
+		return getAllItems().get(numberOfItems()-1).getId();
 	}
 	
 	

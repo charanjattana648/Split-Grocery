@@ -15,5 +15,7 @@ public interface ItemDao {
 	boolean deleteItem(int id);
 	
 	int numberOfItems();
+	
+	int getLastId();
 
 }
