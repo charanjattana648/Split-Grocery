@@ -88,8 +88,8 @@ public class Item {
 
 	@Override
 	public String toString() {
-		return "Items [id=" + id + ", itemName=" + itemName + ", qty=" + qty + ", itemPrice=" + itemPrice + ", forWhom="
-				+ Arrays.toString(forWhom) + ", type=" + type + ", boughtBy=" + boughtBy + ", date=" + date + "]";
+		return "id=" + id + ", itemName=" + itemName + ", qty=" + qty + ", itemPrice=" + itemPrice + ", forWhom="
+				+ Arrays.toString(forWhom) + ", type=" + type + ", boughtBy=" + boughtBy + ", date=" + date;
 	}
 	
 	
