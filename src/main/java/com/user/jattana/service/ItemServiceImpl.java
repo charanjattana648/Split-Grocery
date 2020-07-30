@@ -30,4 +30,13 @@ public class ItemServiceImpl implements ItemService {
 		return itemDao.deleteItem(id);
 	}
 
+	public int numberOfItems() {
+		return itemDao.numberOfItems();
+	}
+
+	public int getLastId() {
+		// TODO Auto-generated method stub
+		return itemDao.getLastId();
+	}
+
 }

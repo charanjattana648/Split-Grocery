@@ -13,5 +13,9 @@ public interface ItemService {
 	List<Item> getThisMonthItems(int monthyear);
 	
 	boolean deleteItem(int id);
+	
+	int numberOfItems();
+	
+	int getLastId();
 
 }
