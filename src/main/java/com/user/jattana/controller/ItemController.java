@@ -15,8 +15,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.user.jattana.dao.ItemDao;
+import com.user.jattana.dao.PersonDao;
 import com.user.jattana.model.Item;
 import com.user.jattana.model.Person;
+import com.user.jattana.service.ItemService;
 
 @Controller
 public class ItemController {
@@ -26,7 +28,10 @@ public class ItemController {
 //	
 	
 	  @Autowired 
-	  ItemDao itemDao;
+	  ItemService itemService;
+	  
+	  @Autowired 
+	  PersonDao personDao;
 	 
 	
 	List<Item> itemList=new ArrayList<Item>();
@@ -36,6 +41,9 @@ public class ItemController {
 	public ModelAndView showItemView(HttpServletRequest req,HttpServletResponse res,Model model)
 	{
 		ModelAndView mv=new ModelAndView("home");
+
+		mv.addObject("person", personDao.getAllPerson());
+		mv.addObject("items", itemService.getAllItems());
 		return mv;
 	}
 	
@@ -44,11 +52,23 @@ public class ItemController {
 	{
 		ModelAndView mv=new ModelAndView("home");
 		Item item=new_item;
-		item.setId(itemDao.numberOfItems()+1);
+		item.setId(itemService.numberOfItems()+1);
 		item.setDate(java.time.LocalDate.now());
 		itemList.add(item);
-		itemDao.addItem(item);
-		mv.addObject("items", itemList);
+		itemService.addItem(item);
+
+		mv.addObject("person", personDao.getAllPerson());
+		mv.addObject("items", itemService.getAllItems());
+		return mv;
+	}
+	
+	@RequestMapping("/addPerson")
+	public ModelAndView showAddedPerson(HttpServletRequest req,Model model,@ModelAttribute("person") Person new_person) {
+		ModelAndView mv=new ModelAndView("home");
+		Person person=new_person;	
+		personDao.addPerson(new_person);
+		mv.addObject("person", personDao.getAllPerson());
+		mv.addObject("items", itemService.getAllItems());
 		return mv;
 	}
 	
