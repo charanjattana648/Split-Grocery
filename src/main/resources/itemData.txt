@@ -6,3 +6,4 @@ id=5, itemName=Bars, qty=4, itemPrice=2.47, forWhom=null, type=not_shared, bough
 id=6, itemName=Lettuce, qty=4, itemPrice=5.1, forWhom=null, type=shared, boughtBy=charan, date=2020-07-29
 id=7, itemName=Lettuce, qty=4, itemPrice=5.1, forWhom=null, type=shared, boughtBy=charan, date=2020-07-29
 id=8, itemName=Lettuce, qty=4, itemPrice=5.1, forWhom=null, type=shared, boughtBy=charan, date=2020-07-29
+id=9, itemName=Cherry, qty=2, itemPrice=4.97, forWhom=null, type=shared, boughtBy=Gurinder, date=2020-07-31
