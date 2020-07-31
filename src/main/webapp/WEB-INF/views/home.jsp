@@ -66,7 +66,7 @@
 	<c:forEach var="p" items="${person}">
 	<div class="wrap-input100 validate-input" data-validate="Name among grocery divided">
 	<span class="label-input100">For Whom</span>
-	<input class="input100" type="checkbox" value="${p.getFirstName()}"  name="forWhom" placeholder="Enter for whom">		
+	<input class="input100" type="checkbox" value="${p.getFirstName()}"  name="person.forWhom" placeholder="Enter for whom">		
 	<label><c:out value="${p.getFirstName()}"></c:out></label>
 	<label><c:out value="${p.getLastName()}"></c:out></label>
 <!-- 	<input type="checkbox" value="1" onclick="changeImage1();" /><label>Vestibular</label> -->
