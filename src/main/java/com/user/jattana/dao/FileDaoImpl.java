@@ -36,7 +36,7 @@ public class FileDaoImpl implements FileDao {
 	{
 		try {
 			FileWriter myWriter = new FileWriter(path,isAppend);
-			if(isFileExist) {
+			if(isFileExist && size(path)>0) {
 		      myWriter.write("\n"+data);
 			}else {
 				 myWriter.write(data);
