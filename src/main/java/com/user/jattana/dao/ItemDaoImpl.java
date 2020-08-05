@@ -13,6 +13,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.util.StringUtils;
 
 import com.user.jattana.model.Item;
 import com.user.jattana.model.Person;
@@ -39,7 +40,7 @@ public class ItemDaoImpl implements ItemDao{
 			reader = fileDao.getData(PATH);
 			String line="";
 			while ((line=reader.readLine())!= null) { 
-				System.out.println(line);
+				//System.out.println(line);
 			String itemData[]=line.split(", ");	
 			Item item=new Item();
 			for(String data: itemData){
@@ -69,10 +70,13 @@ public class ItemDaoImpl implements ItemDao{
 					item.setDate(date);	
 				}else if(item_data[0].equalsIgnoreCase("forWhom"))
 				{
-					//item.setForWhom((item_data[1].split(","));	
+					if(item_data[1]!=null){
+						item.setForWhom(item_data[1].split("/"));	
+						}
+					
+					}
 				}
-				
-			}itemList.add(item);
+			itemList.add(item);
 			}
 			reader.close();
 		} catch (FileNotFoundException e) {
