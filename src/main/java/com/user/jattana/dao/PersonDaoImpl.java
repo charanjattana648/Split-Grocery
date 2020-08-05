@@ -35,7 +35,7 @@ public class PersonDaoImpl implements PersonDao {
 			reader = fileDao.getData(PATH);
 			String line="";
 			while ((line=reader.readLine())!= null) { 
-				System.out.println(line);
+				//System.out.println(line);
 			String itemData[]=line.split(", ");	
 			Person person=new Person();
 			for(String data: itemData){
