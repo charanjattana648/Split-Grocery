@@ -1,2 +1,3 @@
-firstName=CHARANPREET, lastName=SINGH
+firstName=Charanpreet, lastName=Singh
 firstName=Gurinder, lastName=Singh
+firstName=Satinder, lastName=Singh
