@@ -17,6 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.user.jattana.dao.ItemDao;
 import com.user.jattana.dao.PersonDao;
 import com.user.jattana.model.Item;
+import com.user.jattana.model.Owes;
 import com.user.jattana.model.Person;
 import com.user.jattana.service.ItemService;
 
@@ -42,16 +43,25 @@ public class ItemController {
 	{
 		ModelAndView mv=new ModelAndView("home");
 
+		CalculateSplitGrocPrice c=new CalculateSplitGrocPrice();
+		for(Owes o:c.getSplitedGroceryPrice(itemService.getAllItems()))
+		{
+			System.out.println(o);
+		}
+		System.out.println();;
 		mv.addObject("person", personDao.getAllPerson());
 		mv.addObject("items", itemService.getAllItems());
+		//mv.addObject("person", personDao.getAllPerson());
 		return mv;
 	}
 	
 	@RequestMapping("/addItem")
-	public ModelAndView showAddedItem(HttpServletRequest req,Model model,@ModelAttribute("item") Item new_item)
+	public ModelAndView showAddedItem(HttpServletRequest req,Model model,@ModelAttribute("item") Item new_item,@ModelAttribute("person") Person new_p)
 	{
 		ModelAndView mv=new ModelAndView("home");
 		Item item=new_item;
+		System.out.println("new_item -- "+new_p);
+		System.out.println("person item -- "+new_item);
 		item.setId(itemService.numberOfItems()+1);
 		item.setDate(java.time.LocalDate.now());
 		itemList.add(item);
