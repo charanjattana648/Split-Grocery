@@ -10,7 +10,7 @@ public class Item {
 	private String itemName;
 	private int qty;
 	private double itemPrice;
-	private Person[] forWhom;
+	private String[] forWhom;
 	private String type;
 	private String boughtBy;
 	private LocalDate date;
@@ -20,7 +20,7 @@ public class Item {
 		super();
 	}
 	
-	public Item(int id,String itemName, int qty, double itemPrice, Person[] forWhom, String type, String boughtBy,LocalDate date) {
+	public Item(int id,String itemName, int qty, double itemPrice, String[] forWhom, String type, String boughtBy,LocalDate date) {
 		super();
 		this.id=id;
 		this.itemName = itemName;
@@ -67,10 +67,10 @@ public class Item {
 	public void setItemPrice(double itemPrice) {
 		this.itemPrice = itemPrice;
 	}
-	public Person[] getForWhom() {
+	public String[] getForWhom() {
 		return forWhom;
 	}
-	public void setForWhom(Person[] forWhom) {
+	public void setForWhom(String[] forWhom) {
 		this.forWhom = forWhom;
 	}
 	public String getType() {
@@ -86,10 +86,15 @@ public class Item {
 		this.boughtBy = boughtBy;
 	}
 
+	
 	@Override
 	public String toString() {
+		String forWhom_str="";
+		for(String person:forWhom) {
+			forWhom_str+=person+"/";
+		}
 		return "id=" + id + ", itemName=" + itemName + ", qty=" + qty + ", itemPrice=" + itemPrice + ", forWhom="
-				+ Arrays.toString(forWhom) + ", type=" + type + ", boughtBy=" + boughtBy + ", date=" + date;
+				+ forWhom_str.substring(0,forWhom_str.length()-1) + ", type=" + type + ", boughtBy=" + boughtBy + ", date=" + date;
 	}
 	
 	
