@@ -47,8 +47,13 @@ public class ItemController {
 		for(Owes o:c.getSplitedGroceryPrice(itemService.getAllItems()))
 		{
 			System.out.println(o);
-		}
-		System.out.println();;
+		}		
+		System.out.println("===========================================================");
+		for(Owes o:c.getUpdatedOwesList(c.getSplitedGroceryPrice(itemService.getAllItems())))
+		{
+			System.out.println("Item updated is :=>  "+ o);
+		}	
+		
 		mv.addObject("person", personDao.getAllPerson());
 		mv.addObject("items", itemService.getAllItems());
 		//mv.addObject("person", personDao.getAllPerson());
