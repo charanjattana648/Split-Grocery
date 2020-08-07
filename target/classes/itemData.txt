@@ -1,7 +1,7 @@
-id=1, itemName=Apple, qty=1, itemPrice=4.34, forWhom=Gurinder Singh, type=shared_among, boughtBy=CHARANPREET SINGH, date=2020-07-31
-id=2, itemName=milk, qty=2, itemPrice=5.1, forWhom=Satinder Singh, type=totally_for, boughtBy=CHARANPREET SINGH, date=2020-07-31
-id=3, itemName=5 Bhatura, qty=3, itemPrice=9.0, forWhom=Gurinder Singh/Satinder Singh, type=shared_among, boughtBy=CHARANPREET SINGH, date=2020-07-31
-id=4, itemName=Banana, qty=2, itemPrice=1.45, forWhom=Gurinder Singh/Satinder Singh, type=totally_for, boughtBy=CHARANPREET SINGH, date=2020-07-31
-id=5, itemName=Banana, qty=2, itemPrice=1.45, forWhom=Gurinder Singh/Satinder Singh, type=totally_for, boughtBy=CHARANPREET SINGH, date=2020-07-31
-id=6, itemName=Lettuce, qty=4, itemPrice=4.34, forWhom=Gurinder Singh/Satinder Singh, type=shared_among, boughtBy=CHARANPREET SINGH, date=2020-07-31
-id=7, itemName=Milk, qty=2, itemPrice=4.74, forWhom=Gurinder Singh/Satinder Singh, type=shared_among, boughtBy=Gurinder Singh, date=2020-08-01
+id=1, itemName=Apple, qty=1, itemPrice=4.34, forWhom=Gurinder Singh, type=shared_among, boughtBy=Charanpreet Singh, date=2020-07-31
+id=2, itemName=milk, qty=2, itemPrice=5.1, forWhom=Satinder Singh, type=totally_for, boughtBy=Charanpreet Singh, date=2020-07-31
+id=3, itemName=5 Bhatura, qty=3, itemPrice=9.0, forWhom=Gurinder Singh/Satinder Singh, type=shared_among, boughtBy=Charanpreet Singh, date=2020-07-31
+id=4, itemName=Banana, qty=2, itemPrice=1.45, forWhom=Gurinder Singh/Satinder Singh, type=totally_for, boughtBy=Charanpreet Singh, date=2020-07-31
+id=5, itemName=Banana, qty=2, itemPrice=1.45, forWhom=Gurinder Singh/Satinder Singh, type=totally_for, boughtBy=Charanpreet Singh, date=2020-07-31
+id=6, itemName=Lettuce, qty=4, itemPrice=4.34, forWhom=Gurinder Singh/Satinder Singh, type=shared_among, boughtBy=Charanpreet Singh, date=2020-07-31
+id=7, itemName=Milk, qty=2, itemPrice=4.74, forWhom=Charanpreet Singh/Satinder Singh, type=shared_among, boughtBy=Gurinder Singh, date=2020-08-01
